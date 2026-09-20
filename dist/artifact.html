@@ -1390,15 +1390,22 @@ function addSpend() {
   Render.all();
 }
 
-function doExport() {
+async function doExport() {
   const txt = Store.exportJSON();
-  const blob = new Blob([txt], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
+  const filename = "project-65-" + TODAY + ".json";
+  // Inside the artifact viewer a plain <a download> is inert — use the capability.
+  try {
+    if (typeof claude !== "undefined" && claude.use) {
+      const dl = await claude.use("downloads");
+      if (dl) { await dl.save({ filename, data: txt }); Toast.show("Export enregistré"); return; }
+    }
+  } catch (e) {
+    if (e && e.code === "not_granted") { Toast.show("Export refusé", true); return; }
+  }
+  const url = URL.createObjectURL(new Blob([txt], { type: "application/json" }));
   const a = document.createElement("a");
-  a.href = url;
-  a.download = "project-65-" + TODAY + ".json";
-  document.body.appendChild(a);
-  a.click();
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click();
   setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 800);
   Toast.show("Export lancé");
 }
