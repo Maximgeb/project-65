@@ -9,7 +9,7 @@ ROOT = pathlib.Path(__file__).parent
 head = (ROOT / "src" / "head.html").read_text(encoding="utf-8")
 body = (ROOT / "src" / "body.html").read_text(encoding="utf-8")
 
-dist = ROOT / "dist"
+dist = ROOT / "docs"
 dist.mkdir(exist_ok=True)
 
 # ---------- standalone ----------
