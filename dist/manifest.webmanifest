@@ -1,0 +1,17 @@
+{
+  "name": "Project 65 — Bangkok Protocol",
+  "short_name": "Project 65",
+  "description": "Suivi quotidien 55 kg vers 65 kg : poids, repas, training, calories, budget.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#080B0A",
+  "theme_color": "#080B0A",
+  "lang": "fr",
+  "icons": [
+    { "src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/icon-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
